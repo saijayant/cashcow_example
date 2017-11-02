@@ -92,13 +92,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
 
                         JsonObject moviesResponse = null;
 
-                        jr = response.body().getAsJsonArray();
-                        Log.d("getDataOne", "onResponse: " + jr.toString());
-                        String str = jr.get(0).toString();
+//                        jr = response.body().getAsJsonArray();
+                        Log.d("getDataOne", "onResponse: " +response.body());
+                        String str = response.body().toString();
                         Log.d("response", "onResponse: " + str);
                         SharedPreferences mPrefs = BaseActivity.this.getSharedPreferences("DATAONE", Context.MODE_PRIVATE);
                         SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                        prefsEditor.putString("Data_one",jr.toString());
+                        prefsEditor.putString("Data_one",str);
                         prefsEditor.commit();
 
 
@@ -137,15 +137,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
 
                     if (response.code() == 200) {
 
-                        JsonObject moviesResponse = null;
-
-                        JsonArray jr = response.body().getAsJsonArray();
-                        Log.d("response", "onResponse: " + jr);
+                        String str = response.body().toString();
                         SharedPreferences mPrefs = BaseActivity.this.getSharedPreferences("DATATWO", Context.MODE_PRIVATE);
 
                         SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                        prefsEditor.putString("Data_two",jr.toString());
-                        Log.d("inpref", "onResponse: "+jr.toString());
+                        prefsEditor.putString("Data_two",str);
+                        Log.d("inpref", "onResponse: "+str);
                         prefsEditor.commit();
                         if (dialog.isShowing()) {
                             dialog.dismiss();
