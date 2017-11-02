@@ -25,6 +25,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Iterator;
 import java.util.List;
 
 import cashcow_project.sai_jayant.com.cashcowproject.R;
@@ -87,25 +89,19 @@ public class FirstFragment extends Fragment {
             JsonParser jsonParser = new JsonParser();
             JsonObject jo = (JsonObject) jsonParser.parse(strSavedValue);
 
-            Data d = new Data();
+            list.clear();
 
 
-            JsonObject j1 = (JsonObject) jo.get("response");//the name of the object is response so i extracted separately
-            d.setOne(j1.get("id").toString());
-            Log.d("data", "onCreateView: ------ id -----"+j1.get("id").toString());
-            d.setTwo(j1.get("product").toString());
-            Log.d("data", "onCreateView: ------ product -----"+j1.get("product").toString());
-            d.setThree(j1.get("bank").toString());
-            Log.d("data", "onCreateView: ------ bank -----"+j1.get("bank").toString());
-
-            list.add(d);
-            for (int i = 0; i < 4; i++) {
-                Data d1 = new Data();
-                JsonObject j2 = (JsonObject) jo.get("" + i + "");//the name of objecs are in incrimental so i used for loop
-                d1.setOne(j2.get("id").toString());
-                d1.setTwo(j2.get("product").toString());
-                d1.setThree(j2.get("bank").toString());
-                list.add(d1);
+            for (int i = 0; i < 5; i++) {
+                Data d = new Data();
+                JsonObject j1 = (JsonObject) jo.get("id_" + i);//the name of the object is response so i extracted separately
+                d.setOne(j1.get("id").toString());
+                Log.d("data", "onCreateView: ------ id -----" + j1.get("id").toString());
+                d.setTwo(j1.get("product").toString());
+                Log.d("data", "onCreateView: ------ product -----" + j1.get("product").toString());
+                d.setThree(j1.get("bank").toString());
+                Log.d("data", "onCreateView: ------ bank -----" + j1.get("bank").toString());
+                list.add(d);
             }
 
 
