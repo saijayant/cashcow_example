@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.JsonArray;
+
 import cashcow_project.sai_jayant.com.cashcowproject.R;
 
 /**
@@ -19,11 +21,10 @@ public class SecondFragment extends Fragment {
     private int page;
 
     // newInstance constructor for creating fragment with arguments
-    public static SecondFragment newInstance(int page, String title) {
+    public static SecondFragment newInstance(int page, JsonArray title) {
         SecondFragment fragmentFirst = new SecondFragment();
         Bundle args = new Bundle();
         args.putInt("someInt", page);
-        args.putString("someTitle", title);
         fragmentFirst.setArguments(args);
         return fragmentFirst;
     }
